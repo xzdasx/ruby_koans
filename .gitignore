@@ -1,5 +1,1 @@
-dist
-.project_env.rc
-.path_progress
-*.rbc
-koans/*
+.git*
