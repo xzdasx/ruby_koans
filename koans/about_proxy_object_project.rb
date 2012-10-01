@@ -15,9 +15,20 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 class Proxy
   def initialize(target_object)
     @object = target_object
-    # ADD MORE CODE HERE
+    @messages = []
   end
+  attr_accessor :messages
 
+  def method_missing(method_name,*args,&block)
+    @messages.push method_name
+    @object.send(method_name,*args,&block)
+  end
+  def called? (sym)
+    number_of_times_called(sym) > 0
+  end
+  def number_of_times_called(sym)
+    @messages.select {|x| x == sym}.size
+  end
   # WRITE CODE HERE
 end
 
