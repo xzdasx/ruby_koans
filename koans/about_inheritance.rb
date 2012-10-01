@@ -81,5 +81,4 @@ class AboutInheritance < EdgeCase::Koan
       george.growl
     end
   end
-
 end
